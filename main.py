@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 import discord
 import requests, json, os, time
+from bs4 import BeautifulSoup
 
 #Variables unit
 config = json.load(open('config.json'))
@@ -42,8 +43,7 @@ async def on_ready():
                 embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
                 channel = bot.get_channel(id=int(config['channel'])) #channel
                 msg = await channel.send(embed=embed) #send message to channel
-                #delete message after 10 seconds
-                await msg.delete(delay=10)
+                await msg.delete(delay=1)
                 data = json.load(open('atc.json')) #read json file
 
                 for x in data: #if the callsign is in json file
@@ -54,8 +54,7 @@ async def on_ready():
                         data.remove(x) #remove the callsign from json file
                         with open('atc.json', 'w') as f:
                             json.dump(data, f)
-                else:
-                    print("[\033[91mERROR\033[0m] {} not found in json file".format(i))
+                
 
                 
 
@@ -70,7 +69,10 @@ async def on_ready():
                         createdAt = i['createdAt']
                         atis = i['atis']
                         lines = atis['lines']
-
+                        metar_url = f"https://www.aviationweather.gov/metar/data?ids={a[0:4]}"
+                        res = requests.get(metar_url)
+                        res.encoding = "utf-8"
+                        soup = BeautifulSoup(res.text, 'html.parser')
                         if len(lines ) > 1:
                             position = lines[1]
                         else:
@@ -86,6 +88,7 @@ async def on_ready():
                         # embed.add_field(name="Voice", value="{}".format(lines[0]), inline=False) #Voice Server
                         embed.add_field(name="Position", value="{}".format(position), inline=False)
                         embed.add_field(name="Frequency", value="{}MHz".format(frequency), inline=False) #Freq
+                        embed.add_field(name="METAR", value="{}".format(soup.code.string), inline=False) #Freq
                         embed.add_field(name="ATIS", value='\n'.join(map(str, lines)), inline=False) #ATIS of ATC
                         embed.add_field(name="createdAt", value=f"{createdAt}", inline=False)
                         channel = bot.get_channel(id=int(config['channel'])) #channel
