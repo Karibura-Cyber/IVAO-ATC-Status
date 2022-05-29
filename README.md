@@ -25,5 +25,8 @@ Go to <code>config.json</code> and fill your data
   python main.py
 ```
 
+### Update
+* [05/29/2022] METAR of airport
+
 ### License
 MIT License
