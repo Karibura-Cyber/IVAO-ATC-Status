@@ -3,8 +3,6 @@ Discord Bot for check ATC is online or offline and send data to your Discord ser
 
 All data is from IVAO Whazzup Public API
 
-!! WARNING !! Don't Delete <code>atc.json</code>
-
 ### Setup
 ```bash
   pip install -r requirement.txt
