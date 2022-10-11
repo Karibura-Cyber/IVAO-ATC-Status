@@ -28,7 +28,7 @@ async def on_ready():
         content = json.load(open('now.json')) #read json file
         for i in data['clients']['atcs']: #find all ATC
             callsign = i['callsign'] #find callsign of ATC
-            if config['callsign_prefix'] in callsign[0:2]: #check if the callsign is your ATC
+            if config['callsign_prefix'].upper() in callsign[0:2]: #check if the callsign is your ATC
                 now.append(callsign) #append callsign to list
 
         for i in old: #get all callsign from old list
@@ -82,11 +82,13 @@ async def on_ready():
                         message = await bot.get_channel(int(config['channel'])).send(embed=embed) #Send Embed when ATC is online
                         #append message id to json file
                         atc_list.append({"callsign": a, "msg_id": message.id})
+            else:
+                pass
 
                      
         for old_atc in content['clients']['atcs']: #find all ATC from previous JSON file
             old_callsign = old_atc['callsign'] #find callsign from old JSON file
-            if config['callsign_prefix'] in old_callsign[0:2]: #check if ATC is your country
+            if config['callsign_prefix'].upper() in old_callsign[0:2]: #check if ATC is your country
                 old.append(old_callsign) #if ATC is your country then append to list old
         old.clear() #clear all data in list old
 
