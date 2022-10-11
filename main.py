@@ -38,7 +38,7 @@ async def on_ready():
                 embed=discord.Embed(title="{} is now offline".format(i), color=0xff0000)
                 embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
                 msg = await bot.get_channel(int(config['channel'])).send(embed=embed) #Send Offline status when ATC is Offline
-                await msg.delete()
+                await msg.delete(delay=3)
                 data = atc_list #json.load(open('atc.json')) #read json file
 
                 for x in data: #if the callsign is in json file
@@ -53,6 +53,7 @@ async def on_ready():
 
         for a in now: #get data from now list                  
             if a not in old:
+                time.sleep(1)
                 atc = data['clients']['atcs']
                 for i in atc:     
                     if i['callsign'] == a:
