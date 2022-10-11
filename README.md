@@ -19,8 +19,14 @@ Go to <code>config.json</code> and fill your data
 ```
 
 ### Run program
+Windows
 ```bash
   python main.py
+```
+
+Linux
+```bash
+  python3 main.py
 ```
 
 
