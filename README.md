@@ -28,6 +28,8 @@ Linux
   python3 main.py
 ```
 
+### ChangeLog
+- 2022/10/12 METAR & TAF command
 
 ### License
 MIT License
