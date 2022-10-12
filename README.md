@@ -30,6 +30,7 @@ Linux
 
 ### ChangeLog
 - 2022/10/12 METAR & TAF command
+- 2022/10/12 Version checking system
 
 ### License
 MIT License
