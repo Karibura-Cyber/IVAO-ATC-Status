@@ -31,11 +31,11 @@ Linux
 ### Bot Commands
 METAR
 ```bash
-  /metar {icao}
+  /metar
 ```
 TAF
 ```bash
-  /taf {icao}
+  /taf
 ```
 HELP
 ```bash
