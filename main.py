@@ -47,16 +47,14 @@ async def online_check():
             embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
             msg = await bot.get_channel(int(config['channel'])).send(embed=embed) #Send Offline status when ATC is Offline
             await msg.delete()
-            data = atc_list #json.load(open('atc.json')) #read json file
+            data = atc_list
 
             for x in data: #if the callsign is in json file
                 if x['callsign'] == i:
                     print("[\u001b[32mSUCCESS\u001b[37m] Delete MSG ID: {}".format(x['msg_id']))
                     del_msg = await bot.get_channel(int(config['channel'])).fetch_message(x['msg_id']) #get message id
                     await del_msg.delete() #delete message
-                    data.remove(x) #remove the callsign from json file
-                    with open('atc.json', 'w') as f:
-                        json.dump(data, f)              
+                    data.remove(x) #remove the callsign from json file             
 
 
     for a in now: #get data from now list                  
