@@ -39,7 +39,6 @@ async def on_ready():
                 embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
                 msg = await bot.get_channel(int(config['channel'])).send(embed=embed) #Send Offline status when ATC is Offline
                 await msg.delete()
-                #await msg.delete(delay=3)
                 data = atc_list #json.load(open('atc.json')) #read json file
 
                 for x in data: #if the callsign is in json file
@@ -54,35 +53,36 @@ async def on_ready():
 
         for a in now: #get data from now list                  
             if a not in old:
-                time.sleep(1)
-                atc = data['clients']['atcs']
-                for i in atc:     
-                    if i['callsign'] == a:
-                        frequency = i['atcSession']['frequency']
-                        createdAt = i['createdAt']
-                        atis = i['atis']
-                        lines = atis['lines']
+                #time.sleep(1)
+                try:
+                    atc = data['clients']['atcs']
+                    for i in atc:     
+                        if i['callsign'] == a:
+                            frequency = i['atcSession']['frequency']
+                            createdAt = i['createdAt']
+                            atis = i['atis']
+                            lines = atis['lines']
 
-                        if len(lines ) > 1:
-                            position = lines[1]
-                        else:
-                            position = "No information"
+                            if len(lines ) > 1:
+                                position = lines[1]
+                            else:
+                                position = "No information"
 
-                        print("[\u001b[32mONLINE\u001b[37m] {} [{}]".format(a, time.strftime("%H:%M:%S")))
-                        print("[\u001b[32mSUCCESS\u001b[37m] {} Data loaded!".format(a))
-                        embed=discord.Embed()
-                        embed=discord.Embed(title="{} is now online".format(a), color=0x00ff00) 
-                        embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
-                        embed.add_field(name="Callsign", value="{}".format(a), inline=False) #Callsign of ATC
-                        # embed.add_field(name="Server ID", value="{}".format(serverID), inline=False) #Server ID
-                        # embed.add_field(name="Voice", value="{}".format(lines[0]), inline=False) #Voice Server
-                        embed.add_field(name="Position", value="{}".format(position), inline=False)
-                        embed.add_field(name="Frequency", value="{}MHz".format(frequency), inline=False) #Freq
-                        embed.add_field(name="ATIS", value='\n'.join(map(str, lines)), inline=False) #ATIS of ATC
-                        embed.add_field(name="createdAt", value=f"{createdAt}", inline=False)
-                        message = await bot.get_channel(int(config['channel'])).send(embed=embed) #Send Embed when ATC is online
-                        #append message id to json file
-                        atc_list.append({"callsign": a, "msg_id": message.id})
+                            print("[\u001b[32mONLINE\u001b[37m] {} [{}]".format(a, time.strftime("%H:%M:%S")))
+                            print("[\u001b[32mSUCCESS\u001b[37m] {} Data loaded!".format(a))
+                            embed=discord.Embed()
+                            embed=discord.Embed(title="{} is now online".format(a), color=0x00ff00) 
+                            embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
+                            embed.add_field(name="Callsign", value="{}".format(a), inline=False) #Callsign of ATC
+                            embed.add_field(name="Position", value="{}".format(position), inline=False)
+                            embed.add_field(name="Frequency", value="{}MHz".format(frequency), inline=False) #Freq
+                            embed.add_field(name="ATIS", value='\n'.join(map(str, lines)), inline=False) #ATIS of ATC
+                            embed.add_field(name="createdAt", value=f"{createdAt}", inline=False)
+                            message = await bot.get_channel(int(config['channel'])).send(embed=embed) #Send Embed when ATC is online
+                            #append message id to json file
+                            atc_list.append({"callsign": a, "msg_id": message.id})
+                except:
+                    pass
             else:
                 pass
 
