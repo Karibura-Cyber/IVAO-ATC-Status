@@ -1,7 +1,7 @@
 # IVAO-ATC-Status
 Discord Bot for check ATC is online or offline and send data to your Discord server
 
-All data is from IVAO Whazzup Public API
+You can push it to Heroku for 24/7 runtime
 
 ### Setup
 ```bash
@@ -26,6 +26,20 @@ Windows
 Linux
 ```bash
   python3 main.py
+```
+
+### Bot Commands
+METAR
+```bash
+  /metar {icao}
+```
+TAF
+```bash
+  /taf {icao}
+```
+HELP
+```bash
+  /help
 ```
 
 ### ChangeLog
