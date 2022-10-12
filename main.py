@@ -10,21 +10,22 @@ from datetime import date
 config = json.load(open('config.json'))
 TOKEN = config['token']
 URL = "https://api.ivao.aero/v2/tracker/whazzup"
-#bot = commands.Bot(command_prefix='!!')
 bot = discord.Bot()
 page = requests.get(URL)
 data = page.json()
 now = []
 old = []
 atc_list = []
-
+current_version = 0.1
 
 @bot.event
 async def on_ready():
-    print("[\033[33mINFO\033[0m] Bot is ready.", bot.user.name) #Prints the bot name and status
+    print(f"[\033[33mINFO\033[0m] {bot.user.name} is now online. current version is {current_version}") #Prints the bot name and status
     print("[\033[33mINFO\033[0m] Send Message to channel.", config['channel']) #Prints the channel name
     online_check.start()
     print("[\033[33mINFO\033[0m] Online Check started!")
+    version_check.start()
+    print("[\033[33mINFO\033[0m] Version Check started!")
 
 @tasks.loop(seconds=30)
 async def online_check():
@@ -102,7 +103,16 @@ async def online_check():
     for i in now: #get data from now list
         old.append(i) #append data from now list to old list
     now.clear() #clear all data in now list
-    
+
+@tasks.loop(seconds=10)
+async def version_check():
+    r = requests.get("https://raw.githubusercontent.com/Karibura-Cyber/IVAO-ATC-Status/main/version.txt")
+    web_version = float(r.text.replace('\n', ''))
+    if web_version > current_version:
+        print(f"[\033[91mWARNING\033[0m] IVAO ATC Status {web_version} version released! Please update at https://github.com/Karibura-Cyber/IVAO-ATC-Status") 
+        await bot.get_channel(int(config['channel'])).send(f"IVAO ATC Status {web_version} version released! Please update")
+        version_check.stop()
+
 @bot.slash_command()
 async def help(ctx):
     embed=discord.Embed(title="METAR & TAF bot", color=0x8088ff)
