@@ -5,7 +5,7 @@ You can push it to Heroku for 24/7 runtime
 
 ### Setup
 ```bash
-  pip install -r requirement.txt
+  pip install -r requirements.txt
 ```
 ### Config 
 Go to <code>config.json</code> and fill your data
