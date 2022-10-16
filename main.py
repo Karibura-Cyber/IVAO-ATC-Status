@@ -16,7 +16,7 @@ data = page.json()
 now = []
 old = []
 atc_list = []
-current_version = 0.1
+current_version = 0.2
 
 @bot.event
 async def on_ready():
@@ -69,7 +69,7 @@ async def online_check():
                         createdAt = i['createdAt']
                         atis = i['atis']
                         lines = atis['lines']
-
+                        vid = i['userId']
                         if len(lines ) > 1:
                                 position = lines[1]
                         else:
@@ -81,6 +81,7 @@ async def online_check():
                         embed=discord.Embed(title="{} is now online".format(a), color=0x00ff00) 
                         embed.set_thumbnail(url="https://pbs.twimg.com/profile_images/1391075311174000649/8--HPB9-_400x400.jpg")
                         embed.add_field(name="Callsign", value="{}".format(a), inline=False) #Callsign of ATC
+                        embed.add_field(name="VID", value="{}".format(vid), inline=False) #Callsign of ATC
                         embed.add_field(name="Position", value="{}".format(position), inline=False)
                         embed.add_field(name="Frequency", value="{}MHz".format(frequency), inline=False) #Freq
                         embed.add_field(name="ATIS", value='\n'.join(map(str, lines)), inline=False) #ATIS of ATC
