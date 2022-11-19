@@ -1,4 +1,4 @@
-# BOT NOT WORK NOW!! I'LL FIX IT ASAP.
+# 🛑BOT NOT WORK NOW!! I'LL FIX IT ASAP.🛑
 <hr>
 
 # IVAO-ATC-Status
