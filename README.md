@@ -50,7 +50,6 @@ HELP
 ### License
 MIT License
 
-<hr>
 # If bot has problem Please contact me.
 ## Email: meck22772@gmail.com
 
