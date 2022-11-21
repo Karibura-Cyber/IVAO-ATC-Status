@@ -1,5 +1,5 @@
-# 🛑BOT NOT WORK NOW!! I'LL FIX IT ASAP.🛑
-<hr>
+<!--# 🛑BOT NOT WORK NOW!! I'LL FIX IT ASAP.🛑
+<hr>-->
 
 # IVAO-ATC-Status
 Discord Bot for check ATC is online or offline and send data to your Discord server
@@ -49,6 +49,7 @@ HELP
 - 2022/10/12 METAR & TAF command
 - 2022/10/12 Version checking system
 - 2022/10/16 VID
+- 2022/11/21 Change API Source
 
 ### License
 MIT License
