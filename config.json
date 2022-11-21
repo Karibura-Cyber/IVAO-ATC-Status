@@ -1,5 +1,5 @@
 {
-    "token": "",
-    "channel": "",
-    "callsign_prefix": ""
-}   
+    "token": "<Bot Token>",
+    "channel": "<Channel ID>",
+    "callsign_prefix": "<Airport ICAO Code Prefix EX: VT for Thailand Airport>"
+}

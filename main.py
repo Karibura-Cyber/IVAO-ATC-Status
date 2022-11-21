@@ -8,15 +8,18 @@ from datetime import date
 
 #Variables unit
 config = json.load(open('config.json'))
+intents = discord.Intents.default()
+intents.typing = False
+intents.presences = False
 TOKEN = config['token']
-URL = "https://api.ivao.aero/v2/tracker/whazzup"
+URL = "https://blue-tree-06098.pktriot.net"
 bot = discord.Bot()
 page = requests.get(URL)
 data = page.json()
 now = []
 old = []
 atc_list = []
-current_version = 0.2
+current_version = 1
 
 @bot.event
 async def on_ready():
@@ -113,33 +116,5 @@ async def version_check():
         print(f"[\033[91mWARNING\033[0m] IVAO ATC Status {web_version} version released! Please update at https://github.com/Karibura-Cyber/IVAO-ATC-Status") 
         await bot.get_channel(int(config['channel'])).send(f"IVAO ATC Status {web_version} version released! Please update")
         version_check.stop()
-
-@bot.slash_command()
-async def help(ctx):
-    embed=discord.Embed(title="METAR & TAF bot", color=0x8088ff)
-    embed.add_field(name="/metar {icao}", value="Request current METAR of airport", inline=False)
-    embed.add_field(name="/taf {icao}", value="Request TAF of airport", inline=True)
-    await ctx.respond(embed=embed)
-
-@bot.slash_command()
-async def metar(ctx, icao:str):    
-    today = date.today()
-    d = today.strftime("%Y-%m-%d")
-    metar_r = requests.get(f"https://api.met.no/weatherapi/tafmetar/1.0/metar.txt?date={d}&icao={icao}")
-    metar = metar_r.text
-    metar = metar.replace('\n',',')
-    metar = metar.split(',')
-    metar = metar[-3]
-    metar = metar.replace('=', '')
-    await ctx.respond(metar)
-
-@bot.slash_command()
-async def taf(ctx, icao:str):
-    today = date.today()
-    d = today.strftime("%Y-%m-%d")
-    taf_r = requests.get(f"https://api.met.no/weatherapi/tafmetar/1.0/taf?date={d}&icao={icao}")
-    taf = taf_r.text
-    taf = taf.replace('=', '')
-    await ctx.respond(taf)
 
 bot.run(TOKEN)
