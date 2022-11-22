@@ -31,25 +31,11 @@ Linux
   python3 main.py
 ```
 
-### Bot Commands
-METAR
-```bash
-  /metar
-```
-TAF
-```bash
-  /taf
-```
-HELP
-```bash
-  /help
-```
-
 ### ChangeLog
 - 2022/10/12 METAR & TAF command
 - 2022/10/12 Version checking system
 - 2022/10/16 VID
-- 2022/11/21 Change API Source
+- 2022/11/21 Change API Source & Remove bot command
 
 ### License
 MIT License
