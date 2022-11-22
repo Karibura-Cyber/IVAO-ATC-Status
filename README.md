@@ -39,3 +39,6 @@ Linux
 
 ### License
 MIT License
+
+#If You have question or problem of this bot please contact me.
+Email: meck22772@gmail.com
