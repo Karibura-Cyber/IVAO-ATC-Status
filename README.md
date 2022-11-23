@@ -35,7 +35,7 @@ Linux
 - 2022/10/12 METAR & TAF command
 - 2022/10/12 Version checking system
 - 2022/10/16 VID
-- 2022/11/21 Change API Source & Remove bot command
+- 2022/11/21 Remove bot command
 
 ### License
 MIT License
