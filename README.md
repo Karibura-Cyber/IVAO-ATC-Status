@@ -1,5 +1,6 @@
 <!--# 🛑BOT NOT WORK NOW!! I'LL FIX IT ASAP.🛑
 <hr>-->
+### Current version : 1.2
 
 # IVAO-ATC-Status
 Discord Bot for check ATC is online or offline and send data to your Discord server
