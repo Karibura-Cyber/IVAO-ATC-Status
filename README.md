@@ -49,5 +49,5 @@ Linux
 MIT License
 
 # If You have question or problem of this bot please contact me.
-Email: meck22772@gmail.com
+Email: meck22772@gmail.com<br>
 Discord: Meck#1155
