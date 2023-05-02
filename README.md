@@ -36,7 +36,13 @@ Linux
 - 2022/10/12 METAR & TAF command
 - 2022/10/12 Version checking system
 - 2022/10/16 VID
-- 2022/11/21 Remove bot command
+- 2023/5/2   Airline Tracking auto & /track command
+
+### Command
+```
+/track <Flight Number>
+```
+
 
 ### License
 MIT License
