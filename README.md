@@ -1,34 +1,39 @@
-<!--# 🛑BOT NOT WORK NOW!! I'LL FIX IT ASAP.🛑
-<hr>-->
-# IVAO-ATC-Status
 Discord Bot for check ATC is online or offline and send data to your Discord server
 
-You can push it to Heroku for 24/7 runtime
-
 ### Setup
+MAKE A SUB DOMIAN
+1.Go To File Sub Domain and upload it and extract it
+go to discord Developer and make a bot
+
+ go to SSH and type
 ```bash
   pip install -r requirements.txt
 ```
-### Config 
+### Config
 Go to <code>config.json</code> and fill your data
 ```bash
 {
     "token": "<Bot Token>",
     "channel": "<Channel ID>",
-    "callsign_prefix": "<Airport ICAO Code Prefix EX: VT for Thailand Airport | Prefix is mean start with that string>"
+    "airport_prefixes": ["OJAI", "OSDI",] #CHANGE DESIRE AIRPORT ONLY PUT THE ICAO OF THE AIRPORT
 }
-```
 
-### Run program
-Windows
-```bash
-  python main.py
+bot must have : bot ,view channels ,  send messages ,  embed links ,  read message history
+
+ After editing Code go SSH and CD atc.yourdivison.ivao.aero
+ then run 
 ```
+test code 
 
 Linux
 ```bash
   python3 main.py
 ```
+if everything works use this code to keep the bot online
+```bash
+  screen -dmS bot-name python3.9 main.py
+```
+
 
 ### ChangeLog
 - 2022/10/12 METAR & TAF command
@@ -42,10 +47,7 @@ Linux
 ```
 
 
-### License
-MIT License
+<hr>
 
-# If You have question or problem of this bot please contact me.
-Email: meck22772@gmail.com<br>
-Discord: Meck#1155<br>
-Nostr: npub1tx9djndf23ld0fkfw0zl4zn77f4rhqxy0a3kh8vj6dtv4edjgdeq6d95lq
+Special thanks
+https://github.com/enimri - 633950 lyad

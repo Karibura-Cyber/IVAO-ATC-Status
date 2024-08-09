@@ -1,5 +1,5 @@
 {
-    "token": "",
-    "channel_id": "",
-    "airport_prefix": ""
+    "token": "discord token ",
+    "channel_id": "<channel_ID>",
+    "airport_prefixes": ["OJAI", "OSDI", "ORBI", "OJAQ", "OSTT", "OSAP", "OSDZ", "OSKL", "ORBB", "ORAA", "ORNI", "ORMM", "ORKK", "ORER", "OJAM", "OJAC", "OXMF", "ORSU"]
 }
