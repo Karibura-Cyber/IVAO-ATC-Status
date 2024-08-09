@@ -49,5 +49,5 @@ if everything works use this code to keep the bot online
 
 <hr>
 
-Special thanks
+Special thanks <br>
 https://github.com/enimri - 633950 lyad
