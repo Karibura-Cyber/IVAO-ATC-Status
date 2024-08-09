@@ -1,7 +1,7 @@
 Discord Bot for check ATC is online or offline and send data to your Discord server
 
 ### Setup
-MAKE A SUB DOMIAN
+MAKE A SUB DOMIAN <br>
 1.Go To File Sub Domain and upload it and extract it
 go to discord Developer and make a bot
 
